@@ -12,12 +12,12 @@ var used = new Set();
 document.onkeydown = function(event) {
   switch (event.keyCode) {
     case 39:
-      console.log("Right key is pressed.");
+      // console.log("Right key is pressed.");
       shuffleNext(0);
       break;
     case 32:
       event.preventDefault();
-      console.log("space key is pressed.");
+      // console.log("space key is pressed.");
       shuffleNext(0);
       break;
   }
@@ -27,7 +27,7 @@ function startShuffle() {
   // console.log("starting shuffle 0");
   activeCategories.push(TRUTH);
   activeCategories.push(DARE);
-  console.log("starting shuffle");
+  // console.log("starting shuffle");
   activeCategories.push(NEVER);
   activeCategories.push(PEOPLE_TRIVIA);
   activeCategories.push(WILDCARD);
@@ -106,7 +106,7 @@ function shuffleNext(repeats) {
   }
   var cardId = category * 1000 + cardNumber;
   if (used.has(cardId) && used.size < TOTAL_CARDS - 50 && repeats < 7) {
-    console.log("Was going to repeat " + cardId);
+    // console.log("Was going to repeat " + cardId);
     shuffleNext(repeats + 1);
     return;
   }
@@ -124,7 +124,7 @@ function truthNext(repeats) {
   let imgTitle = "1/" + cardNumber + ".png";
   var cardId = TRUTH * 1000 + cardNumber;
   if (used.has(cardId) && used.size < TOTAL_CARDS - 50 && repeats < 7) {
-    console.log("Was going to repeat " + cardId);
+    // console.log("Was going to repeat " + cardId);
     truthNext(repeats + 1);
     return;
   }
