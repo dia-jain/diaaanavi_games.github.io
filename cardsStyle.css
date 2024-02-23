@@ -1,0 +1,23 @@
+.w3-half{
+  text-align: center;
+  position: relative;
+  height: inherit;
+/*   display: inline-block; */
+}
+#checkboxes{
+  text-align: left;
+  position: absolute;
+/*   top: 50%; */
+  left: 50%;
+  transform: translate(-50%);
+  padding-bottom: 25px;
+/*   margin: au to; */
+/*   width: auto; */
+/*   width: 100%; */
+  font-weight: bold;
+}
+
+footer{
+/*   position: static; */
+  margin-top: 250px;
+}

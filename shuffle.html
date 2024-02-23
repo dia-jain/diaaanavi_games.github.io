@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Diaaanavi Games</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style_test.css">
+  <link rel="stylesheet" href="cardsStyle.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    body,
+    h1 {
+      font-family: "Raleway", Arial, sans-serif
+    }
+
+    h1 {
+      letter-spacing: 6px
+    }
+  </style>
+</head>
+
+<body onload="startShuffle()">
+
+  <!-- !PAGE CONTENT! -->
+  <div class="w3-content" style="max-width:1500px">
+
+    <!-- Header -->
+    <header class="w3-panel w3-center w3-opacity" style="padding:60px">
+      <h1>Shuffle Play</h1>
+
+
+      <div class="w3-padding-32">
+        <div class="w3-bar w3-border">
+          <a href="index.html" class="w3-bar-item w3-button">Games</a>
+        </div>
+      </div>
+    </header>
+
+    <div class="w3-row-padding w3-grayscale">
+      <div class="w3-half">
+        <img src="/TITLE_CARDS/SHUFFLE.png" style="width:100%" id="shuffle-id" onclick="shuffleNext(0)">
+      </div>
+      <div height="100%" class="w3-half w3-center" id="belowCard">
+        <p></p>
+        <p></p>
+        <button class="btn-menu" onclick="shuffleNext(0); return false;"> Next </button>
+        <p>
+        </p>
+        <p id="errorMessage"></p>
+
+        <div id="checkboxes w3-left-align" style="position: relative; text-align: left; display: inline-block;">
+          <h3>Select your categories:</h3>
+          <div style="color: #75ad51; font-size:20px">
+            <input type="checkbox" name="truth-check" id="truth-check" onchange="changeCategories(this, TRUTH)"
+              checked />
+            <label for="truth-check"> &nbsp; Truth</label>
+          </div>
+          <p></p>
+          <div style="color: #5eb1f5; font-size:20px">
+            <input type="checkbox" name="dare-check" id="dare-check" onchange="changeCategories(this, DARE)" checked />
+            <label for="dare-check">&nbsp; Dare</label>
+          </div>
+          <p></p>
+          <div style="color: #8555f6; font-size:20px">
+            <input type="checkbox" name="never-check" id="never-check" onchange="changeCategories(this, NEVER)"
+              checked />
+            <label for="never-check">&nbsp; Never Have I Ever</label>
+          </div>
+          <p></p>
+          <div style="color: #d1d102; font-size:20px">
+            <input type="checkbox" name="people-check" id="people-check"
+              onchange="changeCategories(this, PEOPLE_TRIVIA)" checked />
+            <label for="people-check">&nbsp; People Trivia</label>
+          </div>
+          <p></p>
+          <div style="color: #e38242; font-size:20px">
+            <input type="checkbox" name="wildcard-check" id="wildcard-check" onchange="changeCategories(this, WILDCARD)"
+              checked />
+            <label for="wildcard-check">&nbsp; Wildcard</label>
+          </div>
+          <p></p>
+          <div style="color: #e86ebb; font-size:20px">
+            <input type="checkbox" name="karaoke-check" id="karaoke-check" onchange="changeCategories(this, KARAOKE)"
+              checked />
+            <label for="karaoke-check">&nbsp; Karaoke</label>
+          </div>
+          <p></p>
+          <div style="color: #ff0000; font-size:20px">
+            <input type="checkbox" name="most-likely-check" id="most-likely-check"
+              onchange="changeCategories(this, MOST_LIKELY)" checked />
+            <label for="most-likely-check">&nbsp; Most Likely To</label>
+          </div>
+          <p></p>
+          <div style="color: #900000; font-size:20px">
+            <input type="checkbox" name="charades-check" id="charades-check" onchange="changeCategories(this, CHARADES)"
+              checked />
+            <label for="charades-check">&nbsp; Charades</label>
+          </div>
+          <p></p>
+          <div style="color: #f1d0fc; font-size:20px">
+            <input type="checkbox" name="valentines-check" id="valentines-check"
+              onchange="changeCategories(this, VALENTINES)" checked />
+            <label for="valentines-check">&nbsp; Valentines Pack</label>
+          </div>
+          <p></p>
+
+          <!--      Instruction Cards Button -->
+          <button style="text-align: center" class="btn-menu" id="instructionsBtn">Instruction Cards</button>
+        </div>
+
+
+      </div>
+    </div>
+
+  </div>
+
+  <!--   Instructions Pop up -->
+  <div id="instructionsModal" class="instructions-modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="close">&times;</span>
+        <h2>Instruction Cards</h2>
+      </div>
+      <div class="modal-body">
+        <!-- Photo Grid -->
+        <div class="w3-row-padding w3-grayscale" style="margin-bottom:128px">
+          <div style="margin-bottom: 20px" class="w3-half">
+            <img src=" /TITLE_CARDS/TRUTH.png" style="width:100%">
+            <p></p>
+            <img src="/TITLE_CARDS/NEVER.png" style="width:100%">
+            <p></p>
+            <img src="/TITLE_CARDS/WILDCARD.png" style="width:100%">
+            <p></p>
+            <img src="/TITLE_CARDS/MOSTLIKELY.png" style="width:100%">
+            <p></p>
+            <img src="/TITLE_CARDS/VALENTINES.png" style="width:100%">
+          </div>
+
+          <div style="margin-bottom: 20px" class="w3-half">
+            <img src="/TITLE_CARDS/DARE.png" style="width:100%">
+            <p></p>
+            <img src="/TITLE_CARDS/TRIVIA.png" style="width:100%">
+            <p></p>
+            <img src="/TITLE_CARDS/KARAOKE.png" style="width:100%">
+            <p></p>
+            <img src="/TITLE_CARDS/CHARADES.png" style="width:100%">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal CSS -->
+  <style>
+    /* The Modal (background) */
+    .instructions-modal {
+      display: none;
+      /* Hidden by default */
+      position: fixed;
+      /* Stay in place */
+      z-index: 1;
+      /* Sit on top */
+      left: 0;
+      top: 0;
+      width: 100%;
+      /* Full width */
+      height: 100%;
+      /* Full height */
+      overflow: auto;
+      /* Enable scroll if needed */
+      background-color: rgb(0, 0, 0);
+      /* Fallback color */
+      background-color: rgba(0, 0, 0, 0.4);
+      /* Black w/ opacity */
+    }
+
+    input[type=checkbox] {
+      /* Double-sized Checkboxes */
+      -ms-transform: scale(1.5);
+      /* IE */
+      -moz-transform: scale(1.5);
+      /* FF */
+      -webkit-transform: scale(1.5);
+      /* Safari and Chrome */
+      -o-transform: scale(1.5);
+      /* Opera */
+      transform: scale(1.5);
+      padding: 10px;
+    }
+
+
+
+    /* Modal Content/Box */
+    .modal-content {
+      background-color: #fefefe;
+      margin: 10% auto;
+      /* 15% from the top and centered */
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      /* Could be more or less, depending on screen size */
+    }
+
+    /* The Close Button */
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  </style>
+
+  <!--   Instructions Pop up JS -->
+  <script>
+    // Get the modal
+    var modal = document.getElementById("instructionsModal");
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("instructionsBtn");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on the button, open the modal
+    btn.onclick = function () {
+      modal.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+      modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
+
+
+  <!-- Footer -->
+  <footer class="w3-container w3-padding-64 w3-light-grey w3-center w3-large">
+    <td width="10%"><a href="https://instagram.com/diaaanavi?igshid=453bpioxt3ns"><img src="instagram.png"
+          alt="instagram logo" / width="30px"></a></td>
+    <p>powered by <a href="https://www.instagram.com/diaaanavi/" target="_blank"
+        class="w3-hover-text-green">diaaanavi</a></p>
+  </footer>
+
+  <script src="script.js"></script>
+
+</body>
+
+</html>
